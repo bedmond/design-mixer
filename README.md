@@ -1,3 +1,3 @@
 ## design-mixer
 
-A place for cool, creative things built with Angular.
+A place for cool, creative things.

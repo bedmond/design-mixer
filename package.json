@@ -2,20 +2,29 @@
   "name": "design-mixer",
   "version": "1.0.0",
   "description": "A place for cool, creative things to share.",
-  "main": "Gruntfile.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bedmond/design-mixer.git"
+  },
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "author": "Brian Edmond <brianwedmond@gmail.com>",
   "license": "ISC",
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-copy": "^0.8.2",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-hapi": "^0.11.0"
-  },
   "dependencies": {
-    "hapi": "^7.5.0"
+    "hapi": "^7.5.0",
+    "path": "^0.4.9",
+    "angular-masonry": "^0.13.0"
+  },
+  "devDependencies": {
+    "connect-modrewrite": "^0.7.9",
+    "es5-shim": "^4.0.1",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-hapi": "^0.8.1"
   }
 }
