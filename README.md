@@ -1,3 +1,3 @@
 ## design-mixer
 
-A place for cool, creative things.
+A place for cool, creative things to share.

@@ -1,0 +1,10 @@
+.thumbs-container {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.thumbs-container img {
+  max-width: 100%;
+}
+
+

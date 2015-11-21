@@ -1,4 +1,10 @@
-var designMixer = angular.module('DesignMixer', ['ui.router']);
+//Need to show different images. How?
+var genThumb = {
+  src: "/assets/images/SthumbsRed.jpg",
+  src: "/assets/images/HthumbsYellow.jpg"
+};
+
+var designMixer = angular.module('DesignMixer', ['ui.router', 'firebase']);
 
 designMixer.config(['$stateProvider', '$locationProvider', function ($stateProvider, $locationProvider) {
 
@@ -16,33 +22,28 @@ designMixer.config(['$stateProvider', '$locationProvider', function ($stateProvi
       templateUrl: '/templates/detail.html'
     });
   }]);
+designMixer.constant('FIREBASE_URL', 'https://designmixer.firebaseio.com');
 
-designMixer.controller('Thumbs.controller', function ($scope) {
-  function genBrick() {
-    var height = ~~(Math.random() * 500) + 100;
-    var id = ~~(Math.random() * 10000);
-    return {
-      src: 'http://lorempixel.com/280/' + height + '/?' + id
-    };
-  }
+designMixer.controller('Thumbs.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, FIREBASE_URL, $firebaseArray) {
 
-  $scope.bricks = [
-    genBrick(),
-    genBrick(),
-    genBrick(),
-    genBrick(),
-    genBrick(),
-    genBrick()
-  ];
+  //Grab image url from storage to display after upload tool adds an image.
+  //Replaces JS at the top of the page.
+  //var ref = new Firebase(FIREBASE_URL);
+  //var id = ~~(Math.random() * 10000);
 
-  $scope.add = function add() {
-    $scope.bricks.push(genBrick());
-  };
+  //$scope.thumbs = $firebaseArray(ref)
 
-  $scope.remove = function remove() {
-    $scope.bricks.splice(
-      ~~(Math.random() * $scope.bricks.length),
-      1
-    );
-  };
-});
+  //Build the firebaseArray.
+  //$scope.thumbs = function() {
+    //var name = $scope.genThumb;
+    //$scope.thumbs.$add({
+      //name: $scope.genThumb,
+      //src:  "/assets/images/*.{png,jpg,jpeg,tiff} + id"
+      //created_at: Firebase.ServerValue.TIMESTAMP
+  //});
+
+  $scope.thumbs = [];
+    for (var i = 0; i < 36; i++) {
+      $scope.thumbs.push(angular.copy(genThumb));
+    }
+}]);
