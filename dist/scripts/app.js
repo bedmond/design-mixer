@@ -1,7 +1,6 @@
 //Need to show different images. How?
 var genThumb = {
-  src: "/assets/images/SthumbsRed.jpg",
-  src: "/assets/images/HthumbsYellow.jpg"
+  src: "https://c2.staticflickr.com/2/1381/5148511397_d4071e1d32_b.jpg"
 };
 
 var designMixer = angular.module('DesignMixer', ['ui.router', 'firebase']);
@@ -47,3 +46,7 @@ designMixer.controller('Thumbs.controller', ['$scope', 'FIREBASE_URL', '$firebas
       $scope.thumbs.push(angular.copy(genThumb));
     }
 }]);
+
+designMixer.controller('Detail.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, FIREBASE_URL, $firebaseArray) {
+  $scope.detail = angular.copy(genThumb)
+}])

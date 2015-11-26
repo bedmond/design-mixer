@@ -10,16 +10,27 @@
         <input type="text" class="form-control input-lg" placeholder="Search">
       </div>
     </div>
-      <button type="submit" class="btn btn-default" ng-click="add()">Add</button>
-      <button type="submit" class="btn btn-default" ng-click="remove()">Remove</button>
+      <button type="submit" class="btn btn-default btn-lg" ng-click="search()">
+        <span class="glyphicon glyphicon-search"></span></button>
+      <button type="submit" class="btn btn-default btn-lg" ng-click="shuffle()">Shuffle</button>
+    </div>
       </form>
         <div class="row">
           <div class="col-xs-12 col-xs-offset-1 col-md-10">
             <div ng-repeat="thumb in thumbs" class="thumbs-container col-md-2">
+              <div ng-mouseenter="showOverlay = true" ng-mouseleave="showOverlay = false" class="thumbs-detail-image-container">
               <img ng-src="{{ thumb.src }}" alt="doh!">
+              <div class="thumbs-detail-image-overlay" ng-show="showOverlay">
+                <div class="thumbs-overlay-content">
+                <a class="thumbs-detail-overlay-button" ui-sref="album">
+                </a>
+                &nbsp;
+              </div>
+              </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-  </div>
+    </div>
+  </div> 
 </nav>
