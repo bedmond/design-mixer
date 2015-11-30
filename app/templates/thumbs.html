@@ -1,7 +1,7 @@
 <nav class="navbar navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">
+      <a ui-sref="thumbs" class="navbar-brand">
         <img alt="Brand" src="assets/images/designmixer_logo_T150.png">
       </a>
       <form class="navbar-form navbar-left" role="search">
@@ -15,22 +15,14 @@
       <button type="submit" class="btn btn-default btn-lg" ng-click="shuffle()">Shuffle</button>
     </div>
       </form>
-        <div class="row">
-          <div class="col-xs-12 col-xs-offset-1 col-md-10">
-            <div ng-repeat="thumb in thumbs" class="thumbs-container col-md-2">
-              <div ng-mouseenter="showOverlay = true" ng-mouseleave="showOverlay = false" class="thumbs-detail-image-container">
-              <img ng-src="{{ thumb.src }}" alt="doh!">
-              <div class="thumbs-detail-image-overlay" ng-show="showOverlay">
-                <div class="thumbs-overlay-content">
-                <a class="thumbs-detail-overlay-button" ui-sref="album">
-                </a>
-                &nbsp;
-              </div>
-              </div>
-              </div>
-            </div>
-          </div>
+
+      <div class="row col-xs-12 col-xs-offset-1 col-md-10">
+        <div ng-repeat="thumb in thumbs" class="thumb-container col-md-2">
+          <a ui-sref="detail" class="thumb-container">  
+            <img ng-src="{{ thumb.src }}" alt="doh!">
+          </a>
         </div>
+      </div>
     </div>
-  </div> 
+  </div>
 </nav>
