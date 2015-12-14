@@ -1,10 +1,43 @@
 .thumb-container {
-  margin-top: 30px;
-  margin-bottom: 20px;
+  margin-top: 4px;
+  float: right;
+  margin-right: 1em;
 }
 
-.thumb-container img {
-  max-width: 100%;
+  .thumb-container img {
+    max-width: 100%;
+  }
+
+.detail-container {
+  margin-top: 4px;
+  float: right;
+  margin-right: 1em;
 }
+
+  .detail-container img {
+    max-width: 100%;
+  }
+
+.main-search {
+  margin-top: 10px;
+}
+
+.main-search-button {
+  margin-top: 10px;
+}
+
+.shuffle-button {
+  margin-top: 10px;
+}
+
+.sidebar-search {
+  float: left;
+  margin-left: 1em;
+  position: absolute;
+  height: 100%;
+  background-color: #999999;
+}
+
+
 
 
