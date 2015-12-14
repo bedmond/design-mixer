@@ -1,28 +1,37 @@
+<!-- Navigation Header -->
 <nav class="navbar navbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a ui-sref="thumbs" class="navbar-brand">
-        <img alt="Brand" src="assets/images/designmixer_logo_T150.png">
-      </a>
-      <form class="navbar-form navbar-left" role="search">
-    <div class="form-group" ng-controller="Thumbs.controller">
-      <div class="col-xs-4">
-        <input type="text" class="form-control input-lg" placeholder="Search">
-      </div>
-    </div>
-      <button type="submit" class="btn btn-default btn-lg" ng-click="search()">
-        <span class="glyphicon glyphicon-search"></span></button>
-      <button type="submit" class="btn btn-default btn-lg" ng-click="shuffle()">Shuffle</button>
-    </div>
-      </form>
-
-      <div class="row col-xs-12 col-xs-offset-1 col-md-10">
-        <div ng-repeat="thumb in thumbs" class="thumb-container col-md-2">
-          <a ui-sref="detail" class="thumb-container">  
-            <img ng-src="{{ thumb.src }}" alt="doh!">
-          </a>
+  <a ui-sref="thumbs" class="navbar-brand">
+    <img alt="Brand" src="assets/images/designmixer_logo_T150.png">
+  </a>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group" ng-controller="Thumbs.controller">
+        <div class="col-xs-12">
+          <input type="text" class="form-control main-search" placeholder="Search">
         </div>
       </div>
-    </div>
-  </div>
+        <button type="submit" class="btn btn-default main-search-button" ng-click="search()">
+          <span class="glyphicon glyphicon-search"></span></button>
+        <button type="submit" class="btn btn-default shuffle-button" ng-click="shuffle()">Shuffle</button>
+      </div>
+    </form>
 </nav>
+
+<!-- Refined Search -->
+  <div class="container-fluid col-xs-12 col-md-10">
+    <form class="navbar-form sidebar-search" role="search">
+      <div class="row col-xs-12">
+      </br>
+        <input type="text" class="form-control" placeholder="Refine Search">
+      </div>
+    </form>
+
+<!-- Search Results -->
+    <div class="row search-return">
+      <div ng-repeat="thumb in thumbs" class="thumb-container col-md-2">
+        <a ui-sref="detail" class="thumb-container">  
+          <img ng-src="{{ thumb.src }}" alt="doh!">
+        </a>
+      </div>
+    </div>
+   
+  </div>
