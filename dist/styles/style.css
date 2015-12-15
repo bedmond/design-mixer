@@ -1,7 +1,23 @@
+.navbar {
+  float: left;
+  margin-left: 1em;
+}
+.navbar-left {
+  float: left;
+}
+
+.form-group-main-search {
+  float: left;
+  margin-left: 1em;
+}
+
+.search-return {
+  padding-left: 250px;
+}
+
 .thumb-container {
   margin-top: 4px;
-  float: right;
-  margin-right: 1em;
+  float: left;
 }
 
   .thumb-container img {
@@ -9,9 +25,8 @@
   }
 
 .detail-container {
-  margin-top: 4px;
-  float: right;
-  margin-right: 1em;
+  margin-top: 8px;
+  float: left;
 }
 
   .detail-container img {
