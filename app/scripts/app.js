@@ -6,7 +6,6 @@ var thumb = {
 var designMixer = angular.module('DesignMixer', ['ui.router', 'firebase']);
 
 designMixer.config(['$stateProvider', '$locationProvider', function ($stateProvider, $locationProvider) {
-
   $locationProvider.html5Mode(true);
 
   $stateProvider.state('thumbs', {
@@ -15,13 +14,22 @@ designMixer.config(['$stateProvider', '$locationProvider', function ($stateProvi
     templateUrl: '/templates/thumbs.html'
   });
 
-    $stateProvider.state('detail', {
-      url: '/detail',
-      controller: 'Detail.controller',
-      templateUrl: '/templates/detail.html'
-    });
+  $stateProvider.state('detail', {
+    url: '/detail',
+    controller: 'Detail.controller',
+    templateUrl: '/templates/detail.html'
+  });
+
+  $stateProvider.state('upload', {
+    url: '/upload',
+    controller: 'Upload.controller',
+    templateURL: '/templates/upload.html'
+  });
+
+
   }]);
 designMixer.constant('FIREBASE_URL', 'https://designmixer.firebaseio.com');
+
 
 designMixer.controller('Thumbs.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, FIREBASE_URL, $firebaseArray) {
 
@@ -47,9 +55,27 @@ designMixer.controller('Thumbs.controller', ['$scope', 'FIREBASE_URL', '$firebas
     }
 }]);
 
+
+
 designMixer.controller('Detail.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, FIREBASE_URL, $firebaseArray) {
   $scope.detail = angular.copy(thumb)
-}])
+}]);
+
+
+
+designMixer.controller('Upload.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, $FIREBASE_URL, $firebaseArray) {
+
+  $scope.uploadImage = function() {
+  var image = $scope.image;
+  $scope.images.$add({
+    image: $scope.image,
+    priority: -1
+  });
+
+  $scope.image = [];
+
+  }
+}]);
 
 
 
