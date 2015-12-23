@@ -53,6 +53,26 @@
   background-color: #999999;
 }
 
+.upload-form {
+  margin-left: 1em;
+  position: absolute;
+  margin-top: 100px;
+}
+
+.email {
+  margin-top: 20px;
+  margin-left: 1em;
+}
+
+.password {
+  margin-left: 1em;
+}
+
+.upload-file {
+  margin-top: 50px;
+  margin-left: 1em;
+}
+
 
 
 
