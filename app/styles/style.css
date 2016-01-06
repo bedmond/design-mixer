@@ -53,10 +53,25 @@
   background-color: #999999;
 }
 
-.upload-form {
+.info-form {
   margin-left: 1em;
   position: absolute;
   margin-top: 100px;
+}
+
+.btn-group-login {
+  margin-top: 20px;
+  margin-left: 1em;
+}
+
+.btn-group-register {
+  margin-top: 20px;
+  margin-left: 1em;
+}
+
+.container-message {
+  margin-top: 80px;
+  margin-left: 2em;
 }
 
 .email {
@@ -69,7 +84,7 @@
 }
 
 .upload-file {
-  margin-top: 50px;
+  margin-top: 80px;
   margin-left: 1em;
 }
 

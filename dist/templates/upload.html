@@ -4,9 +4,10 @@
     <img alt="Brand" src="assets/images/designmixer_logo_T150.png">
   </a>
     <div class="form-group upload-file">
-      <label for="upload-file">File input</label>
-      <input type="file" id="upload-file">
-      <p class="help-block">24MB max file size, JPG or TIFF only.</p>
+      <label for="upload-file"><h4>Image Upload</h4></label>
+      <input ng-model="image" type="file" id="upload-file">
+      </br>
+      <p class="help-block">10MB max file size, JPG or TIFF only.</p>
     </br>
       <button type="submit" class="btn btn-success" ng-click="uploadImage()">Upload</button>
     </div>

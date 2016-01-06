@@ -3,7 +3,7 @@
   <a ui-sref="thumbs" class="navbar-brand">
     <img alt="Brand" src="assets/images/designmixer_logo_T150.png">
   </a>
-  <form class="upload-form">
+  <form class="info-form">
     <div class="form-group email">
       <label class="sr-only" for="email">Email address</label>
       <input ng-model="email" type="email" class="form-control" id="emailInput" placeholder="Email">
@@ -12,12 +12,13 @@
       <label class="sr-only" for="password">Password</label>
       <input ng-model="password" type="password" class="form-control" id="passwordInput" placeholder="Password">
     </div>
-    <button type="submit" class="btn btn-success" ng-click="login()">Log in</button>
-    <button type="submit" class="btn btn-success" ng-click="logout()">Log out</button>
+    <div class="btn-group-login">
+      <button type="submit" class="btn btn-success" ng-click="login()">Log in</button>
+      <button type="submit" class="btn btn-danger" ng-click="logout()">Log out</button>
+    </div>
   </form>
-</br>
-</br>
-</br>
-  <h5><p ng-show="authData">Logged in.</p><h5>
-  <h5><p ng-hide="authData">Logged out. Log in to upload images.</p><h5>
+    <div class="container-message">
+      <h4><p ng-show="authData">Logged in.</p><h4>
+      <h4><p ng-hide="authData">Logged out. Log in to upload images.</p><h4>
+    </div>
 </div>

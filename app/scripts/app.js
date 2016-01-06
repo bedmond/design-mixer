@@ -62,15 +62,14 @@ designMixer.config(['$stateProvider', '$locationProvider', function ($stateProvi
     }
   });
 
-
-  }]);
+}]);
 
 designMixer.constant('FIREBASE_URL', 'https://designmixer.firebaseio.com');
 
 //Search display page. Displays images that have been uploaded.
 designMixer.controller('Thumbs.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, FIREBASE_URL, $firebaseArray) {
 
-  //replicates sample image for styling and testing
+   //replicates sample image for styling and testing
   $scope.thumbs = [];
     for (var i = 0; i < 36; i++) {
       $scope.thumbs.push(angular.copy(thumb));
@@ -137,17 +136,24 @@ designMixer.controller('Login.controller', ['$scope', 'FIREBASE_URL', '$firebase
 }]);
 
 //Upload page, must be registered and logged in.
-designMixer.controller('Upload.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, $FIREBASE_URL, $firebaseArray) {
+designMixer.controller('Upload.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', 'currentAuth', function ($scope, FIREBASE_URL, $firebaseArray, currentAuth) {
 
+  var ref = new Firebase(FIREBASE_URL);
+  
+  $scope.images = $firebaseArray(ref);
+
+  //create data URL and add to firebase
   $scope.uploadImage = function() {
-  var image = $scope.image;
-  $scope.images.$add({
-    image: $scope.image,
-    priority: -1
-  });
 
-  $scope.image = [];
+    var name = $scope.image;
+    $scope.images.$add({
+      name: $scope.image,
+      created_at: Firebase.ServerValue.TIMESTAMP,
+      priority: -1
 
+    });
+
+    $scope.image = [];
   }
 }]);
 
