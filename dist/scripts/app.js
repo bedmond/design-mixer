@@ -142,8 +142,12 @@ designMixer.controller('Upload.controller', ['$scope', 'FIREBASE_URL', '$firebas
   
   $scope.images = $firebaseArray(ref);
 
-  //create data URL and add to firebase
   $scope.uploadImage = function() {
+    console.log($scope.image);
+
+    // Get the image data from the fileread directive
+    // Get the upload path from Amazon
+    // Combine them and push to firebase
 
     var name = $scope.image;
     $scope.images.$add({
@@ -155,6 +159,28 @@ designMixer.controller('Upload.controller', ['$scope', 'FIREBASE_URL', '$firebas
 
     $scope.image = [];
   }
+
+}]);
+
+designMixer.directive("fileread", [function () {
+    return {
+        scope: {
+            fileread: "=",
+            obj: "=ngModel"
+        },
+        link: function (scope, element, attributes) {
+            console.log(element);
+
+            element.bind("change", function (changeEvent) {
+                console.log(changeEvent.target.files[0]);
+                scope.$apply(function () {
+                    scope.obj = changeEvent.target.files[0];
+                    // or all selected files:
+                    // scope.fileread = changeEvent.target.files;
+                });
+            });
+        }
+    }
 }]);
 
 
