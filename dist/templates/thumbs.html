@@ -26,9 +26,9 @@
 
 <!-- Search Results -->
     <div class="row search-return">
-      <div ng-repeat="thumb in thumbs" class="thumb-container col-md-2">
+      <div ng-repeat="image in images" class="thumb-container col-md-2">
         <a ui-sref="detail" class="thumb-container">  
-          <img ng-src="{{ thumb.src }}" alt="doh!">
+          <img ng-src="{{ image.src }}" alt="doh!">
         </a>
       </div>
     </div>

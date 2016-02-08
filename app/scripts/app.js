@@ -70,10 +70,14 @@ designMixer.constant('FIREBASE_URL', 'https://designmixer.firebaseio.com');
 designMixer.controller('Thumbs.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, FIREBASE_URL, $firebaseArray) {
 
    //replicates sample image for styling and testing
-  $scope.thumbs = [];
-    for (var i = 0; i < 36; i++) {
-      $scope.thumbs.push(angular.copy(thumb));
-    }
+  //$scope.thumbs = [];
+  //for (var i = 0; i < 36; i++) {
+    //$scope.thumbs.push(angular.copy(thumb));
+  //}
+
+  //need to figure out how to display image here after upload to Firebase
+  $scope.image = [];
+    console.log($scope.image);
 
 }]);
 
@@ -166,18 +170,27 @@ designMixer.directive("fileread", [function () {
     return {
         scope: {
             fileread: "=",
-            obj: "=ngModel"
+            //may need to return this to action
+            //obj: "ng-model"
         },
         link: function (scope, element, attributes) {
             console.log(element);
 
             element.bind("change", function (changeEvent) {
                 console.log(changeEvent.target.files[0]);
-                scope.$apply(function () {
-                    scope.obj = changeEvent.target.files[0];
-                    // or all selected files:
-                    // scope.fileread = changeEvent.target.files;
-                });
+                //converts image to base64, may not need to do?
+                var reader = new FileReader();
+                reader.onload = function (loadEvent) {
+                  
+                  scope.$apply(function () {
+                      scope.fileread = loadEvent.target.result;
+                      // scope.obj = changeEvent.target.files[0];
+
+                      // or all selected files:
+                      // scope.fileread = changeEvent.target.files;
+                  });
+                }
+                reader.readAsDataURL(changeEvent.target.files[0]);
             });
         }
     }
