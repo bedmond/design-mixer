@@ -153,6 +153,22 @@ designMixer.controller('Upload.controller', ['$scope', 'FIREBASE_URL', '$firebas
     // Get the upload path from Amazon
     // Combine them and push to firebase
 
+    //still attempting to get upload to Amazon without exposing key.  Need to figure out why this does not access root as in example.
+    
+    // Create an S3 client
+    var s3 = new AWS.S3();
+
+    // Use bucket and upload something into it
+    s3.createBucket({Bucket: 'designmixerimages'}, function() {
+      var params = {Bucket: 'designmixerimages', Key: 'keyName', Body: 'Hello World!'};
+      s3.putObject(params, function(err, data) {
+        if (err)
+          console.log(err)
+        else
+          console.log("Successfully uploaded data to designmixerimages/keyName");
+      });
+    });
+
     var name = $scope.image;
     $scope.images.$add({
       name: $scope.image,
@@ -163,6 +179,8 @@ designMixer.controller('Upload.controller', ['$scope', 'FIREBASE_URL', '$firebas
 
     $scope.image = [];
   }
+
+
 
 }]);
 
