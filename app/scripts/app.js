@@ -144,31 +144,50 @@ designMixer.controller('Upload.controller', ['$scope', 'FIREBASE_URL', '$firebas
 
   var ref = new Firebase(FIREBASE_URL);
   
+  
   $scope.images = $firebaseArray(ref);
 
   $scope.uploadImage = function() {
     console.log($scope.image);
-
-    // Get the image data from the fileread directive
-    // Get the upload path from Amazon
-    // Combine them and push to firebase
-
-    //still attempting to get upload to Amazon without exposing key.  Need to figure out why this does not access root as in example.
-    
-    // Create an S3 client
-    var s3 = new AWS.S3();
-
-    // Use bucket and upload something into it
-    s3.createBucket({Bucket: 'designmixerimages'}, function() {
-      var params = {Bucket: 'designmixerimages', Key: 'keyName', Body: 'Hello World!'};
-      s3.putObject(params, function(err, data) {
-        if (err)
-          console.log(err)
-        else
-          console.log("Successfully uploaded data to designmixerimages/keyName");
-      });
+    AWS.config.region = 'us-east-1'; // 1. Enter your region
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-east-1:6ed5170a-3463-4b8d-a14f-58a0b279baa3' // 2. Enter your identity pool
+    });
+    AWS.config.credentials.get(function(err) {
+        if (err) alert(err);
+        console.log(AWS.config.credentials);
     });
 
+    var bucketName = 'designmixerimages'; // Enter your bucket name
+    var bucket = new AWS.S3({
+        params: {
+            Bucket: bucketName
+        }
+    });
+
+    if($scope.image) {
+      var objKey = 'testing/' + $scope.image.name;
+      var params = {
+          Key: objKey,
+          ContentType: $scope.image.type,
+          Body: $scope.image,
+          ACL: 'public-read'
+      };
+
+      bucket.putObject(params, function(err, data) {
+        if (err) {
+          alert(err.message);
+          return false;
+        } else {
+          alert('Upload done');
+      }
+    })
+    .on('httpUploadProgress', function(progress) {
+      console.log(Math.round(progress.loaded / progress.total * 100) + '% done');
+    });
+  } else {
+    //alert('No file selected');
+  }
     var name = $scope.image;
     $scope.images.$add({
       name: $scope.image,
@@ -179,9 +198,6 @@ designMixer.controller('Upload.controller', ['$scope', 'FIREBASE_URL', '$firebas
 
     $scope.image = [];
   }
-
-
-
 }]);
 
 designMixer.directive("fileread", [function () {
@@ -189,7 +205,7 @@ designMixer.directive("fileread", [function () {
         scope: {
             fileread: "=",
             //may need to return this to action
-            //obj: "ng-model"
+            obj: "=ngModel"
         },
         link: function (scope, element, attributes) {
             console.log(element);
@@ -197,18 +213,16 @@ designMixer.directive("fileread", [function () {
             element.bind("change", function (changeEvent) {
                 console.log(changeEvent.target.files[0]);
                 //converts image to base64, may not need to do?
-                var reader = new FileReader();
-                reader.onload = function (loadEvent) {
-                  
-                  scope.$apply(function () {
-                      scope.fileread = loadEvent.target.result;
-                      // scope.obj = changeEvent.target.files[0];
+                //var reader = new FileReader();
+                //reader.onload = function (loadEvent) {  
+                scope.$apply(function () {
+                    //scope.fileread = loadEvent.target.result;
+                      scope.obj = changeEvent.target.files[0];
 
                       // or all selected files:
-                      // scope.fileread = changeEvent.target.files;
-                  });
-                }
-                reader.readAsDataURL(changeEvent.target.files[0]);
+                      // scope.fileread = changeEvent.target.files; 
+                });
+                //reader.readAsDataURL(changeEvent.target.files[0]);
             });
         }
     }
