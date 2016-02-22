@@ -1,6 +1,6 @@
 //Placeholder images for styling and testing
-var thumb = {
-  src: "https://farm5.staticflickr.com/4074/4915795521_40b2faf863_b.jpg"
+var image = {
+  src: "https://s3.amazonaws.com/designmixerimages/testing/IMG_0032.jpg"
 };
 
 var designMixer = angular.module('DesignMixer', ['ui.router', 'firebase']);
@@ -69,22 +69,19 @@ designMixer.constant('FIREBASE_URL', 'https://designmixer.firebaseio.com');
 //Search display page. Displays images that have been uploaded.
 designMixer.controller('Thumbs.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, FIREBASE_URL, $firebaseArray) {
 
-   //replicates sample image for styling and testing
-  //$scope.thumbs = [];
-  //for (var i = 0; i < 36; i++) {
-    //$scope.thumbs.push(angular.copy(thumb));
-  //}
-
   //need to figure out how to display image here after upload to Firebase
-  $scope.image = [];
-    console.log($scope.image);
+
+  $scope.images = [];
+  for (var i = 0; i < 36; i++) {
+    $scope.images.push(angular.copy(image));
+  }
 
 }]);
 
 //Detail page displayed when thumb is clicked on.
 designMixer.controller('Detail.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, FIREBASE_URL, $firebaseArray) {
   
-  $scope.detail = angular.copy(thumb)
+  $scope.detail = angular.copy(image)
 }]);
 
 //Register page, required for login.
@@ -149,16 +146,16 @@ designMixer.controller('Upload.controller', ['$scope', 'FIREBASE_URL', '$firebas
 
   $scope.uploadImage = function() {
     console.log($scope.image);
-    AWS.config.region = 'us-east-1'; // 1. Enter your region
+    AWS.config.region = 'us-east-1';
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: 'us-east-1:6ed5170a-3463-4b8d-a14f-58a0b279baa3' // 2. Enter your identity pool
+        IdentityPoolId: 'us-east-1:6ed5170a-3463-4b8d-a14f-58a0b279baa3'
     });
     AWS.config.credentials.get(function(err) {
         if (err) alert(err);
         console.log(AWS.config.credentials);
     });
 
-    var bucketName = 'designmixerimages'; // Enter your bucket name
+    var bucketName = 'designmixerimages';
     var bucket = new AWS.S3({
         params: {
             Bucket: bucketName
@@ -186,7 +183,7 @@ designMixer.controller('Upload.controller', ['$scope', 'FIREBASE_URL', '$firebas
       console.log(Math.round(progress.loaded / progress.total * 100) + '% done');
     });
   } else {
-    //alert('No file selected');
+    alert('No file selected');
   }
     var name = $scope.image;
     $scope.images.$add({
@@ -204,7 +201,6 @@ designMixer.directive("fileread", [function () {
     return {
         scope: {
             fileread: "=",
-            //may need to return this to action
             obj: "=ngModel"
         },
         link: function (scope, element, attributes) {
