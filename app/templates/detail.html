@@ -28,8 +28,10 @@
 <!-- Search Results -->
     <div class="row search-return">
       <a ui-sref="thumbs" class="detail-container col-xs-12 col-md-12">
-        <img ng-src="{{ detail.src }}" alt="doh!">
+      <div ng-repeat="image in images">
+        <img ng-src="{{ detail(image) }}" alt="doh!">
       </a>
+    </div>
     </div>
   </div>
 

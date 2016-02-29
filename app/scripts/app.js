@@ -1,7 +1,7 @@
 //Placeholder images for styling and testing
-var image = {
-  src: "https://s3.amazonaws.com/designmixerimages/testing/IMG_0032.jpg"
-};
+//var image = {
+  //src: "https://s3.amazonaws.com/designmixerimages/testing/IMG_0032.jpg"
+//};
 
 var designMixer = angular.module('DesignMixer', ['ui.router', 'firebase']);
 
@@ -68,20 +68,36 @@ designMixer.constant('FIREBASE_URL', 'https://designmixer.firebaseio.com');
 
 //Search display page. Displays images that have been uploaded.
 designMixer.controller('Thumbs.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, FIREBASE_URL, $firebaseArray) {
+  $scope.images = [
+    "IMG_0032.jpg",
+    "IMG_0035.jpg"
+  ];
+
+  $scope.getImage = function(imageName) {
+    return "https://s3.amazonaws.com/designmixerimages/testing/" + imageName;
+  };
 
   //need to figure out how to display image here after upload to Firebase
-
-  $scope.images = [];
-  for (var i = 0; i < 36; i++) {
-    $scope.images.push(angular.copy(image));
-  }
+  //$scope.images = [];
+  //for (var i = 0; i < 36; i++) {
+    //$scope.images.push(angular.copy(image));
+  //}
 
 }]);
 
 //Detail page displayed when thumb is clicked on.
 designMixer.controller('Detail.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, FIREBASE_URL, $firebaseArray) {
-  
-  $scope.detail = angular.copy(image)
+
+  //work out how to display detail when thumb is clicked on
+
+  $scope.images = [
+    "IMG_0032.jpg",
+    "IMG_0035.jpg"
+  ];
+
+  $scope.detail = function(imageName) {
+    return "https://s3.amazonaws.com/designmixerimages/testing/" + imageName;
+  };
 }]);
 
 //Register page, required for login.
@@ -146,6 +162,8 @@ designMixer.controller('Upload.controller', ['$scope', 'FIREBASE_URL', '$firebas
 
   $scope.uploadImage = function() {
     console.log($scope.image);
+
+    //load image to storage
     AWS.config.region = 'us-east-1';
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({
         IdentityPoolId: 'us-east-1:6ed5170a-3463-4b8d-a14f-58a0b279baa3'
@@ -185,6 +203,8 @@ designMixer.controller('Upload.controller', ['$scope', 'FIREBASE_URL', '$firebas
   } else {
     alert('No file selected');
   }
+
+    //add image reference to database
     var name = $scope.image;
     $scope.images.$add({
       name: $scope.image,
