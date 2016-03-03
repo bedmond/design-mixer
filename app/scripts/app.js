@@ -66,16 +66,40 @@ designMixer.config(['$stateProvider', '$locationProvider', function ($stateProvi
 
 designMixer.constant('FIREBASE_URL', 'https://designmixer.firebaseio.com');
 
+
 //Search display page. Displays images that have been uploaded.
 designMixer.controller('Thumbs.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, FIREBASE_URL, $firebaseArray) {
+
+  //Add info to array of images to drive search?
   $scope.images = [
     "IMG_0032.jpg",
-    "IMG_0035.jpg"
+    "IMG_0035.jpg",
+    "IMG_0040.jpg",
+    "IMG_0041.jpg",
+    "IMG_0042.jpg",
+    "IMG_0043.jpg",
+    "IMG_0045.jpg",
+    "IMG_0047.jpg",
+    "IMG_0048.jpg",
+    "IMG_0049.jpg",
+    "IMG_0051.jpg"
   ];
 
   $scope.getImage = function(imageName) {
     return "https://s3.amazonaws.com/designmixerimages/testing/" + imageName;
   };
+
+  //Shuffles the images uploaded and in array.
+  $scope.shuffle = function(images) {
+    var m = images.length, t, i;
+    while (m) {
+      i = Math.floor(Math.random() * m--);
+      t = images[m];
+      images[m] = images[i];
+      images[i] = t;
+    }
+    return images;
+  }
 
   //need to figure out how to display image here after upload to Firebase
   //$scope.images = [];
@@ -92,7 +116,16 @@ designMixer.controller('Detail.controller', ['$scope', 'FIREBASE_URL', '$firebas
 
   $scope.images = [
     "IMG_0032.jpg",
-    "IMG_0035.jpg"
+    "IMG_0035.jpg",
+    "IMG_0040.jpg",
+    "IMG_0041.jpg",
+    "IMG_0042.jpg",
+    "IMG_0043.jpg",
+    "IMG_0045.jpg",
+    "IMG_0047.jpg",
+    "IMG_0048.jpg",
+    "IMG_0049.jpg",
+    "IMG_0051.jpg"
   ];
 
   $scope.detail = function(imageName) {

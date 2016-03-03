@@ -17,11 +17,14 @@
 
 .thumb-container {
   margin-top: 4px;
+  margin-left: 4px;
+  margin-right: 8px;
   float: left;
 }
 
   .thumb-container img {
-    max-width: 100%;
+    width: 100px;
+    height: 100px;
   }
 
 .detail-container {
