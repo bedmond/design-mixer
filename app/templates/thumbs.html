@@ -2,7 +2,7 @@
 <div ng-app="designMixer">
   <div ng-controller="Thumbs.controller">
     <nav class="navbar navbar">
-      <a ui-sref="thumbs" class="navbar-brand">
+      <a ui-sref="detail" class="navbar-brand">
         <img alt="Brand" src="assets/images/designmixer_logo_T150.png">
       </a>
         <form class="navbar-form navbar-left" role="search">
@@ -14,16 +14,15 @@
             <button type="submit" class="btn btn-default main-search-button" ng-click="search()">
               <span class="glyphicon glyphicon-search"></span></button>
        
-            <button type="submit" class="btn btn-default shuffle-button" ng-click="images = shuffle(images)">Shuffle</button>
+            <button type="submit" class="btn btn-default shuffle-button" ng-click="images = shuffle(images)">Shake</button>
+            <!-- add button to toggle views -->
         </form>
     </nav>
 
-    <!-- Refine Search -->
+    <!-- Ad space/call outs -->
       <div class="container-fluid col-xs-12 col-md-10">
-        <form class="navbar-form sidebar-search" role="search">
+        <form class="navbar-form sidebar-callouts" role="callouts">
           <div class="row col-xs-12">
-          </br>
-            <input type="text" class="form-control" placeholder="Refine Search">
           </div>
         </form>
 

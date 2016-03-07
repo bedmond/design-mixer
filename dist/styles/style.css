@@ -28,11 +28,14 @@
   }
 
 .detail-container {
-  margin-top: 8px;
+  margin-top: 4px;
+  margin-left: 4px;
+  margin-right: 8px;
   float: left;
 }
 
   .detail-container img {
+    margin-top: 4px;
     max-width: 100%;
   }
 
@@ -48,9 +51,10 @@
   margin-top: 10px;
 }
 
-.sidebar-search {
+.sidebar-callouts {
   float: left;
   margin-left: 1em;
+  min-width: 225px;
   position: absolute;
   height: 100%;
   background-color: #999999;

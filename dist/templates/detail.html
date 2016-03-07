@@ -1,6 +1,6 @@
 <!-- Navigation Header -->
 <nav class="navbar navbar">
-  <a ui-sref="thumbs" class="navbar-brand">
+  <a ui-sref="detail" class="navbar-brand">
     <img alt="Brand" src="assets/images/designmixer_logo_T150.png">
   </a>
     <form class="navbar-form navbar-left" role="search">
@@ -11,27 +11,25 @@
       </div>
         <button type="submit" class="btn btn-default main-search-button" ng-click="search()">
           <span class="glyphicon glyphicon-search"></span></button>
-        <button type="submit" class="btn btn-default shuffle-button" ng-click="shuffle()">Shuffle</button>
+        <button type="submit" class="btn btn-default shuffle-button" ng-click="images = shuffle(images)">Shake</button>
       </div>
     </form>
 </nav>
 
-<!-- Refine Search -->
+<!-- Ad space/call outs -->
   <div class="container-fluid col-xs-12 col-md-10">
-    <form class="navbar-form sidebar-search" role="search">
+    <form class="navbar-form sidebar-callouts" role="callouts">
       <div class="row col-xs-12">
-      </br>
-        <input type="text" class="form-control" placeholder="Refine Search">
       </div>
     </form>
 
 <!-- Search Results -->
     <div class="row search-return">
       <a ui-sref="thumbs" class="detail-container col-xs-12 col-md-12">
-      <div ng-repeat="image in images">
-        <img ng-src="{{ detail(image) }}" alt="doh!">
+        <div ng-repeat="image in images">
+          <img ng-src="{{ getImage(image) }}" alt="doh!">
+        </div>
       </a>
-    </div>
     </div>
   </div>
 

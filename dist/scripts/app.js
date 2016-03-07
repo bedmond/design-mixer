@@ -22,16 +22,16 @@ designMixer.factory('Auth', ['$firebaseAuth', 'FIREBASE_URL', function ($firebas
 designMixer.config(['$stateProvider', '$locationProvider', function ($stateProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
-  $stateProvider.state('thumbs', {
+  $stateProvider.state('detail', {
     url: '/',
     controller: 'Thumbs.controller',
-    templateUrl: '/templates/thumbs.html'
+    templateUrl: '/templates/detail.html'
   });
 
-  $stateProvider.state('detail', {
-    url: '/detail',
-    controller: 'Detail.controller',
-    templateUrl: '/templates/detail.html'
+  $stateProvider.state('thumbs', {
+    url: '/thumbs',
+    controller: 'Thumbs.controller',
+    templateUrl: '/templates/thumbs.html'
   });
 
   $stateProvider.state('register', {
@@ -101,19 +101,12 @@ designMixer.controller('Thumbs.controller', ['$scope', 'FIREBASE_URL', '$firebas
     return images;
   }
 
-  //need to figure out how to display image here after upload to Firebase
-  //$scope.images = [];
-  //for (var i = 0; i < 36; i++) {
-    //$scope.images.push(angular.copy(image));
-  //}
-
 }]);
 
 //Detail page displayed when thumb is clicked on.
 designMixer.controller('Detail.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, FIREBASE_URL, $firebaseArray) {
 
   //work out how to display detail when thumb is clicked on
-
   $scope.images = [
     "IMG_0032.jpg",
     "IMG_0035.jpg",
