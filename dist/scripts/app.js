@@ -82,11 +82,12 @@ designMixer.controller('Thumbs.controller', ['$scope', 'FIREBASE_URL', '$firebas
     "IMG_0047.jpg",
     "IMG_0048.jpg",
     "IMG_0049.jpg",
-    "IMG_0051.jpg"
+    "IMG_0051.jpg",
+    "IMG_0059.jpg"
   ];
 
-  $scope.getImage = function(imageName) {
-    return "https://s3.amazonaws.com/designmixerimages/testing/" + imageName;
+  $scope.getImage = function(image) {
+    return "https://s3.amazonaws.com/designmixerimages/testing/" + image;
   };
 
   //Shuffles the images uploaded and in array.
@@ -118,11 +119,12 @@ designMixer.controller('Detail.controller', ['$scope', 'FIREBASE_URL', '$firebas
     "IMG_0047.jpg",
     "IMG_0048.jpg",
     "IMG_0049.jpg",
-    "IMG_0051.jpg"
+    "IMG_0051.jpg",
+    "IMG_0059.jpg"
   ];
 
-  $scope.detail = function(imageName) {
-    return "https://s3.amazonaws.com/designmixerimages/testing/" + imageName;
+  $scope.getImage = function(image) {
+    return "https://s3.amazonaws.com/designmixerimages/testing/" + image;
   };
 }]);
 
@@ -269,6 +271,22 @@ designMixer.directive("fileread", [function () {
         }
     }
 }]);
+
+//toy with this directive for large image comp
+designMixer.directive('galleryExample', function($interval, $window) {
+  return {
+    restrict: 'A',
+    templateUrl: '/templates/thumbs.html',
+    scope: {
+      images: '='
+    },
+    link: function(scope, element, attributes) {
+      scope.openInNewWindow = function(index) {
+        $window.open(scope.images[index].url);
+      }
+    }
+  };
+})
 
 
 

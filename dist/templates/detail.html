@@ -12,6 +12,8 @@
         <button type="submit" class="btn btn-default main-search-button" ng-click="search()">
           <span class="glyphicon glyphicon-search"></span></button>
         <button type="submit" class="btn btn-default shuffle-button" ng-click="images = shuffle(images)">Shake</button>
+        <!-- add button to toggle views -->
+        <button type="submit" class="btn btn-default shuffle-button" ui-sref="thumbs">Thumb view</button>
       </div>
     </form>
 </nav>
@@ -24,12 +26,14 @@
     </form>
 
 <!-- Search Results -->
-    <div class="row search-return">
-      <a ui-sref="thumbs" class="detail-container col-xs-12 col-md-12">
-        <div ng-repeat="image in images">
-          <img ng-src="{{ getImage(image) }}" alt="doh!">
-        </div>
-      </a>
-    </div>
+  <div class="row search-return">
+    <a class="detail-container col-xs-12 col-md-12">
+      <div ng-repeat="image in images">
+        <img ng-src="{{ getImage(image) }}" alt="doh!">
+        <td>{{ images.caption }}</td>
+        <td>{{ images.image }}</td>
+      </div>
+    </a>
   </div>
+</div>
 

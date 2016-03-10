@@ -16,6 +16,7 @@
        
             <button type="submit" class="btn btn-default shuffle-button" ng-click="images = shuffle(images)">Shake</button>
             <!-- add button to toggle views -->
+            <button type="submit" class="btn btn-default shuffle-button" ui-sref="detail">Zoom view</button>
         </form>
     </nav>
 
@@ -29,8 +30,7 @@
     <!-- Search Results -->
         <div class="row search-return">
           <div ng-repeat="image in images" class="thumb-container col-md-2">
-            <a ui-sref="detail" class="thumb-container">  
-              <img ng-src="{{ getImage(image) }}" alt="doh!">
+            <a class="thumb-container"> <img ng-src="{{ getImage(image) }}" alt="doh!">
             </a>
           </div>
         </div>
