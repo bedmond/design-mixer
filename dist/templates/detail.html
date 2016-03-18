@@ -6,11 +6,15 @@
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group" ng-controller="Detail.controller">
         <div class="col-xs-12 col-sm-6 col-md-8">
-          <input type="text" class="form-control main-search" placeholder="Search">
+
+          <!-- Search controller upcoming -->
+
+          <!-- <input type="text" class="form-control main-search" placeholder="Search"> -->
         </div>
       </div>
-        <button type="submit" class="btn btn-default main-search-button" ng-click="search()">
-          <span class="glyphicon glyphicon-search"></span></button>
+        <!-- <button type="submit" class="btn btn-default main-search-button" ng-click="search()">
+          <span class="glyphicon glyphicon-search"></span></button> -->
+
         <button type="submit" class="btn btn-default shuffle-button" ng-click="images = shuffle(images)">Shake</button>
         <!-- add button to toggle views -->
         <button type="submit" class="btn btn-default shuffle-button" ui-sref="thumbs">Thumb view</button>
@@ -19,17 +23,21 @@
 </nav>
 
 <!-- Ad space/call outs -->
-  <div class="container-fluid col-xs-12 col-md-10">
-    <form class="navbar-form sidebar-callouts" role="callouts">
-      <div class="row col-xs-12">
+      <div class="container-fluid col-xs-12 col-md-10">
+        <form class="navbar-form sidebar-callouts" role="callouts">
+          <img src="https://s3.amazonaws.com/designmixerimages/testing/sampleLogo2.png">
+          <img src="https://s3.amazonaws.com/designmixerimages/testing/sampleLogo2.png">
+          <img src="https://s3.amazonaws.com/designmixerimages/testing/sampleLogo2.png">
+          <img src="https://s3.amazonaws.com/designmixerimages/testing/sampleLogo2.png">
+          <div class="row col-xs-12">
+        </form>
       </div>
-    </form>
 
 <!-- Search Results -->
   <div class="row search-return">
     <a class="detail-container col-xs-12 col-md-12">
       <div ng-repeat="image in images">
-        <img ng-src="{{ getImage(image) }}" alt="doh!">
+        <img ng-src="{{ getImage(image) }}" class="img-responsive" alt="doh!">
         <td>{{ images.caption }}</td>
         <td>{{ images.image }}</td>
       </div>

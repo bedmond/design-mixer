@@ -16,28 +16,27 @@
 }
 
 .thumb-container {
-  margin-top: 4px;
-  margin-left: 4px;
-  margin-right: 8px;
-  float: left;
+  margin-top: 1em;
+  margin-left: 1em;
 }
 
   .thumb-container img {
-    width: 100px;
-    height: 100px;
+    max-width: 100%;
+    height: auto;
+    display: center-block;
   }
 
 .detail-container {
   margin-top: 4px;
   margin-left: 4px;
   margin-right: 8px;
-  float: left;
 }
 
   .detail-container img {
     margin-top: 4px;
     max-width: 100%;
     height: auto;
+    display: center-block;
   }
 
 .main-search {
@@ -56,10 +55,18 @@
   float: left;
   margin-left: 1em;
   min-width: 225px;
+  max-width: 225px;
   position: absolute;
-  height: 100%;
+  height: 650px;
   background-color: #999999;
 }
+
+  .sidebar-callouts img {
+    margin-top: 1em;
+    max-width: 100%;
+    height: auto;
+    display: center-block;
+  }
 
 .info-form {
   margin-left: 1em;

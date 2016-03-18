@@ -66,7 +66,6 @@ designMixer.config(['$stateProvider', '$locationProvider', function ($stateProvi
 
 designMixer.constant('FIREBASE_URL', 'https://designmixer.firebaseio.com');
 
-
 //Search display page. Displays images that have been uploaded.
 designMixer.controller('Thumbs.controller', ['$scope', 'FIREBASE_URL', '$firebaseArray', function ($scope, FIREBASE_URL, $firebaseArray) {
 
