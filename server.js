@@ -1,7 +1,7 @@
 var Hapi = require('hapi'),
     path = require('path'),
     AWS = require('aws-sdk'),
-    port = process.env.PORT || 3000,
+    port = process.env.PORT || 5000,
     server = new Hapi.Server(port),
     routes = {
         css: {
