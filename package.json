@@ -32,5 +32,5 @@
   },
   "Resource": {
     "arn:aws:cognito-identity:us-east-1:b9e01cda-d86a-4aed-b4a3-0c00f11873c0/*"
-  }
+  },
 }
