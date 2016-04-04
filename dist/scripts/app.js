@@ -34,11 +34,11 @@ designMixer.config(['$stateProvider', '$locationProvider', function ($stateProvi
     templateUrl: '/templates/thumbs.html'
   });
 
-  $stateProvider.state('register', {
-    url: '/register',
-    controller: 'Register.controller',
-    templateUrl: '/templates/register.html',
-  });
+  //$stateProvider.state('register', {
+    //url: '/register',
+    //controller: 'Register.controller',
+    //templateUrl: '/templates/register.html',
+  //});
 
   $stateProvider.state('login', {
     url: '/login',
@@ -129,24 +129,24 @@ designMixer.controller('Detail.controller', ['$scope', 'FIREBASE_URL', '$firebas
 }]);
 
 //Register page, required for login.
-designMixer.controller('Register.controller', ['$scope', '$firebaseArray', 'Auth', function ($scope, $firebaseArray, Auth) {
+//designMixer.controller('Register.controller', ['$scope', '$firebaseArray', 'Auth', function ($scope, $firebaseArray, Auth) {
 
-  $scope.createUser = function() {
-    $scope.message = null;
-    $scope.error = null;
+  //$scope.createUser = function() {
+    //$scope.message = null;
+    //$scope.error = null;
 
-    Auth.$createUser({
-      email: $scope.email,
-      password: $scope.password,
-    }).then(function(userData) {
-      console.log("User created with uid: " + userData.uid);
-    }).catch(function(error) {
-      $scope.error = error;
-      console.log("Error: ", error);
-    });
-  }
+    //Auth.$createUser({
+      //email: $scope.email,
+      //password: $scope.password,
+    //}).then(function(userData) {
+      //console.log("User created with uid: " + userData.uid);
+    //}).catch(function(error) {
+      //$scope.error = error;
+      //console.log("Error: ", error);
+    //});
+  //}
 
-}]);
+//}]);
 
 //Login page, required for upload of images.
 designMixer.controller('Login.controller', ['$scope', 'FIREBASE_URL', '$firebaseAuth', 'currentAuth', 'Auth', '$firebaseArray', function ($scope, FIREBASE_URL, $firebaseAuth, currentAuth, Auth, $firebaseArray) {
