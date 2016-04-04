@@ -82,7 +82,8 @@ designMixer.controller('Thumbs.controller', ['$scope', 'FIREBASE_URL', '$firebas
     "IMG_0048.jpg",
     "IMG_0049.jpg",
     "IMG_0051.jpg",
-    "IMG_0059.jpg"
+    "IMG_0059.jpg",
+    "IMG_0082.jpg",
   ];
 
   $scope.getImage = function(image) {
